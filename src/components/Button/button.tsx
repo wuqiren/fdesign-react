@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import React from 'react';
 import classnames from 'classnames';
 
 type ButtonType = 'primary' | 'default' | 'danger' | 'link';
@@ -14,9 +14,9 @@ interface BaseButtonProps {
 
 const Button = (props: BaseButtonProps) => {
   const { btnType, className, size, disabled, children, href } = props;
-  const classes = classnames('fish-btn', className, {
-    [`fish-btn-${btnType}`]: btnType,
-    [`fish-btn-${size}`]: size,
+  const classes = classnames('f-btn', className, {
+    [`f-btn-${btnType}`]: btnType,
+    [`f-btn-${size}`]: size,
     disabled: btnType === 'link' && disabled,
   });
   if (btnType === 'link' && href) {
