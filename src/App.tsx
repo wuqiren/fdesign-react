@@ -3,6 +3,9 @@ function App() {
   return (
     <div className='App'>
       <Button btnType='primary'>你好</Button>
+      <Button disabled={true} btnType='primary'>
+        你好
+      </Button>
     </div>
   );
 }
