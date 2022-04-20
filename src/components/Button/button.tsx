@@ -16,7 +16,7 @@ const Button = (props: BaseButtonProps) => {
   const { btnType, className, size, disabled, children, href } = props;
   const classes = classnames('fish-btn', className, {
     [`fish-btn-${btnType}`]: btnType,
-    [`fish-${size}`]: size,
+    [`fish-btn-${size}`]: size,
     disabled: btnType === 'link' && disabled,
   });
   if (btnType === 'link' && href) {
@@ -26,9 +26,11 @@ const Button = (props: BaseButtonProps) => {
       </a>
     );
   } else {
-    <button className={classes} disabled={disabled}>
-      {children}
-    </button>;
+    return (
+      <button className={classes} disabled={disabled}>
+        {children}
+      </button>
+    );
   }
 };
 Button.defaultProps = {
