@@ -1,5 +1,6 @@
 import React from 'react';
 import classnames from 'classnames';
+import { type } from '@testing-library/user-event/dist/type';
 
 type ButtonType = 'primary' | 'default' | 'danger' | 'link';
 type ButtonSize = 'lg' | 'sm';
@@ -11,23 +12,27 @@ interface BaseButtonProps {
   children: React.ReactNode;
   href?: string;
 }
-
-const Button = (props: BaseButtonProps) => {
-  const { btnType, className, size, disabled, children, href } = props;
-  const classes = classnames('f-btn', className, {
-    [`f-btn-${btnType}`]: btnType,
-    [`f-btn-${size}`]: size,
+type NativeButtonProps = BaseButtonProps & React.ButtonHTMLAttributes<HTMLElement>
+type AnchorButtonProps = BaseButtonProps & React.AnchorHTMLAttributes<HTMLElement>
+export type ButtonProps = Partial<NativeButtonProps & AnchorButtonProps>;
+const Button = (props: ButtonProps) => {
+  const { btnType, className, size, disabled, children, href,...restProps } = props;
+  const classes = classnames('btn', className, {
+    [`btn-${btnType}`]: btnType,
+    [`btn-${size}`]: size,
     disabled: btnType === 'link' && disabled,
   });
   if (btnType === 'link' && href) {
     return (
-      <a className={classes} href={href}>
+      <a className={classes} href={href}
+      {...restProps}
+      >
         {children}
       </a>
     );
   } else {
     return (
-      <button className={classes} disabled={disabled}>
+      <button   {...restProps} className={classes} disabled={disabled}>
         {children}
       </button>
     );
