@@ -1,7 +1,19 @@
 import Button from './components/Button/button';
+import Menu from './components/Menu/menu'
+import MenuItem from './components/Menu/menuItem'
 function App() {
   return (
     <div className='App'>
+
+      <Menu>
+        <MenuItem>231231</MenuItem>
+        <MenuItem>231231</MenuItem>
+
+        <MenuItem>231231</MenuItem>
+
+    </Menu>
+
+
       <Button btnType='primary'>你好</Button>
       
       <Button size='lg' btnType='primary'>你好</Button>
