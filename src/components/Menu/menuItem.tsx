@@ -1,10 +1,10 @@
-import React from 'react'
+import React,{useContext} from 'react'
 import classnames from 'classnames'
-
+import {MenuContxt} from './menu'
 
 
 interface MenuItemProps {
-  index?: number,
+  index: number,
   disabled?: boolean,
   className?: string,
   style?: React.CSSProperties,
@@ -12,11 +12,20 @@ interface MenuItemProps {
   
 }
 const MenuItem = (props: MenuItemProps) => {
-  const {index, className, disabled,style,children } = props;
+  const { index, className, disabled, style, children } = props;
+  const context = useContext(MenuContxt)
   const classes = classnames('menu-item',className, {
-    'is-disabled':disabled,
+    'is-disabled': disabled,
+    'is-active':context.index===index
   })
-  return <li style={style} className={classes}>
+  const handleClick = () => {
+    console.log(context.onSelect,'context.onSelect')
+    if (context.onSelect) {
+      console.log(index,'indexindex')
+      context.onSelect(index)
+    }
+  }
+  return <li style={style} className={classes} onClick={handleClick}>
     {children}
   </li>
 }

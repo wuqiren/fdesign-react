@@ -6,10 +6,10 @@ function App() {
     <div className='App'>
 
       <Menu>
-        <MenuItem>231231</MenuItem>
-        <MenuItem>231231</MenuItem>
+        <MenuItem index={0}>231231</MenuItem>
+        <MenuItem index={1}>231231</MenuItem>
 
-        <MenuItem>231231</MenuItem>
+        <MenuItem index={2}>231231</MenuItem>
 
     </Menu>
 

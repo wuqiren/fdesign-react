@@ -13,18 +13,30 @@ interface MenuProps {
   onSelect?: SelectBack;
 }
 interface IMenuContext {
-  index?: number;
+  index: number;
   onSelect?: SelectBack;
 }
 export const MenuContxt = createContext<IMenuContext>({index:0 })
 const Menu = (props: MenuProps) => {
-  const { className, mode, style, defaultIndex,children } = props;
-  const classes = classnames('f-menu',className, {
-    
+  const { className, mode, style, defaultIndex, children, onSelect } = props;
+  const [currentActive,setIsActive] = useState(defaultIndex)
+  
+  const classes = classnames('f-menu', className, {
+    'menu-vertical':mode==='vertical'
   })
-
+  const handleClick = (index:number) => {
+    setIsActive(index);
+    onSelect && onSelect(index);
+  }
+  const passedContext: IMenuContext = {
+    index: currentActive ? currentActive : 0,
+    onSelect:handleClick
+  }
+ 
   return <ul style={style} className={classes}>
-    {children}
+    <MenuContxt.Provider value={passedContext}>
+      {children}
+    </MenuContxt.Provider>
   </ul>
 }
 Menu.defaultProps = {
