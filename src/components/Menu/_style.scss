@@ -25,3 +25,17 @@
         }
     }
 }
+
+.menu-vertical {
+    flex-direction: column;
+    border-bottom: 0px;
+    border-right: $menu-border-width solid $menu-border-color;
+    .menu-item {
+        border-left: $menu-item-active-border-width solid transparent;
+        &.is-active,
+        &:hover {
+            border-bottom: 0px;
+            border-left: $menu-item-active-border-width solid $menu-item-active-color
+        }
+    }
+}
