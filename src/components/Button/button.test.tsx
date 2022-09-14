@@ -11,7 +11,7 @@ describe('test Button Component', () => {
     expect(element.tagName).toEqual('BUTTON');
     expect(element).toHaveClass('btn btn-default')
   })
-  it('should render the correct component based on different proprs', () => {
+  it('should render the correct component based on different props', () => {
     
   })
   it('should render a link when btnType equals link and href is provided', () => {

@@ -1,4 +1,3 @@
-import React from 'react'
 import {fireEvent, render,RenderResult,cleanup} from '@testing-library/react'
 
 import Menu,{MenuProps} from './menu';
