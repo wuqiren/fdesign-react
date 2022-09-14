@@ -9,7 +9,6 @@ interface MenuItemProps {
   className?: string,
   style?: React.CSSProperties,
   children?:React.ReactNode
-  
 }
 const MenuItem = (props: MenuItemProps) => {
   const { index, className, disabled, style, children } = props;
@@ -19,9 +18,7 @@ const MenuItem = (props: MenuItemProps) => {
     'is-active':context.index===index
   })
   const handleClick = () => {
-    console.log(context.onSelect,'context.onSelect')
     if (context.onSelect) {
-      console.log(index,'indexindex')
       context.onSelect(index)
     }
   }

@@ -4,12 +4,12 @@ import classnames from 'classnames'
 
 type MenuMode = 'vertical' | 'horizontal' | 'inline'
 type SelectBack = (selectedIndex: number) => void;
-interface MenuProps {
+export interface MenuProps {
   className?: string;
   mode?: MenuMode;
   style?: React.CSSProperties;
   defaultIndex?: number;
-  children: React.ReactNode;
+  children?: React.ReactNode;
   onSelect?: SelectBack;
 }
 interface IMenuContext {
@@ -22,7 +22,7 @@ const Menu = (props: MenuProps) => {
   const [currentActive,setIsActive] = useState(defaultIndex)
   
   const classes = classnames('f-menu', className, {
-    'menu-vertical':mode==='vertical'
+    'menu-vertical':mode === 'vertical'
   })
   const handleClick = (index:number) => {
     setIsActive(index);
@@ -33,7 +33,7 @@ const Menu = (props: MenuProps) => {
     onSelect:handleClick
   }
  
-  return <ul style={style} className={classes}>
+  return <ul style={style} className={classes} data-testid='test-menu'>
     <MenuContxt.Provider value={passedContext}>
       {children}
     </MenuContxt.Provider>

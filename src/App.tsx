@@ -4,13 +4,10 @@ import MenuItem from './components/Menu/menuItem'
 function App() {
   return (
     <div className='App'>
-
       <Menu>
         <MenuItem index={0} disabled={true}>231231</MenuItem>
         <MenuItem index={1}>231231</MenuItem>
-
         <MenuItem index={2}>231231</MenuItem>
-
     </Menu>
 
 
