@@ -1,6 +1,6 @@
 import React,{useState,createContext} from 'react'
 import classnames from 'classnames'
-
+import { MenuItemProps} from './menuItem'
 
 type MenuMode = 'vertical' | 'horizontal' | 'inline'
 type SelectBack = (selectedIndex: number) => void;
@@ -33,9 +33,20 @@ const Menu = (props: MenuProps) => {
     onSelect:handleClick
   }
  
+  const renderChildren =()=>{
+    return React.Children.map(children,(child,index)=>{
+      const childElement = child as React.FunctionComponentElement<MenuItemProps>
+      const {displayName} = childElement.type;
+      if(displayName==='MenuItem'){
+        return React.cloneElement(childElement,{index})
+      }else{
+        console.warn('Warning:Menu has a child which is not a MenuItem Components')
+      }
+    })
+  }
   return <ul style={style} className={classes} data-testid='test-menu'>
     <MenuContxt.Provider value={passedContext}>
-      {children}
+      {renderChildren()}
     </MenuContxt.Provider>
   </ul>
 }
