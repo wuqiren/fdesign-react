@@ -1,34 +1,21 @@
-import Button from './components/Button/button';
+// import Button from './components/Button/button';
 import Menu from './components/Menu/menu'
 import MenuItem from './components/Menu/menuItem'
+import SubMenu from './components/Menu/subMenu';
 function App() {
   return (
     <div className='App'>
-      <Menu defaultIndex={2}>
+      <Menu defaultIndex={2} mode='vertical'>
         <MenuItem disabled={true}>231231</MenuItem>
         <MenuItem >231231</MenuItem>
         <MenuItem >231231</MenuItem>
+        <SubMenu title='这是一个测试'>
+          <MenuItem >231231</MenuItem>
+          <MenuItem >231231</MenuItem>
+        </SubMenu>
+         <MenuItem >231231</MenuItem>
     </Menu>
-
-      <Button btnType='primary'>你好</Button>
-      <Button size='lg' btnType='primary'>你好</Button>
-      <Button size='sm' btnType='primary'>你好</Button>
-
-      <Button btnType='default'>你好</Button>
-      <Button btnType='danger'>你好</Button>
-      <Button btnType='default' disabled>你好</Button>
-      <Button disabled={true} btnType='primary'>
-        你好
-      </Button>
-
-      <Button disabled={true}  href= '1 ' btnType='link'>
-      链接
-      </Button>
-      <Button  href= '1 ' btnType='link'>
-      链接1
-      </Button>
     </div>
   );
 }
-
 export default App;
