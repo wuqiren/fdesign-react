@@ -3,35 +3,40 @@ import classnames from 'classnames'
 import { MenuItemProps} from './menuItem'
 
 type MenuMode = 'vertical' | 'horizontal'
-type SelectBack = (selectedIndex: number) => void;
+type SelectBack = (selectedIndex: string) => void;
 export interface MenuProps {
   className?: string;
   mode?: MenuMode;
   style?: React.CSSProperties;
-  defaultIndex?: number;
+  defaultIndex?: string;
   children?: React.ReactNode;
   onSelect?: SelectBack;
+  defaultOpenMenus?:string[];
 }
 interface IMenuContext {
-  index: number;
+  index: string;
   onSelect?: SelectBack;
+  mode?:string;
+  defaultOpenMenus?:string[];
 }
-export const MenuContxt = createContext<IMenuContext>({index:0 })
+export const MenuContxt = createContext<IMenuContext>({index:'0' })
 const Menu = (props: MenuProps) => {
-  const { className, mode, style, defaultIndex, children, onSelect } = props;
+  const { className, mode, style, defaultIndex, children, onSelect,  defaultOpenMenus} = props;
   const [currentActive,setIsActive] = useState(defaultIndex)
-  
+
   const classes = classnames('f-menu', className, {
     'menu-vertical':mode === 'vertical',
     'menu-horizontal':mode !=='vertical'
   })
-  const handleClick = (index:number) => {
+  const handleClick = (index:string) => {
     setIsActive(index);
     onSelect && onSelect(index);
   }
   const passedContext: IMenuContext = {
-    index: currentActive ? currentActive : 0,
-    onSelect:handleClick
+    index: currentActive ? currentActive : '0',
+    onSelect:handleClick,
+    mode,
+    defaultOpenMenus
   }
  
   const renderChildren =()=>{
@@ -39,7 +44,7 @@ const Menu = (props: MenuProps) => {
       const childElement = child as React.FunctionComponentElement<MenuItemProps>
       const {displayName} = childElement.type;
       if(displayName==='MenuItem' || displayName==='SubMenu'){
-        return React.cloneElement(childElement,{index})
+        return React.cloneElement(childElement,{index:index.toString()})
       }else{
         console.warn('Warning:Menu has a child which is not a MenuItem Components')
       }
@@ -53,6 +58,6 @@ const Menu = (props: MenuProps) => {
 }
 Menu.defaultProps = {
   mode: 'horizontal',
-  defaultIndex:0,
+  defaultIndex:'0',
 }
 export default Menu;

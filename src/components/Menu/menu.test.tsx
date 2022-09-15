@@ -5,13 +5,13 @@ import Menu,{MenuProps} from './menu';
 import MenuItem from './menuItem';
 
 const testProps:MenuProps ={
-    defaultIndex:0,
+    defaultIndex:'0',
     onSelect:jest.fn(),
     className:'test'
 }
 
 const testVerProps:MenuProps={
-    defaultIndex:0,
+    defaultIndex:'0',
     mode:'vertical',
 }
 
@@ -46,7 +46,7 @@ describe('test Menu and MenuItem Component',()=>{
         fireEvent.click(thirdItem);
         expect(thirdItem).toHaveClass('is-active')
         expect(activeElement).not.toHaveClass('is-active');
-        expect(testProps.onSelect).toHaveBeenCalledWith(2);// 调用的参数是2 
+        expect(testProps.onSelect).toHaveBeenCalledWith('2');// 调用的参数是2 
         fireEvent.click(disabledElement);
         expect(disabledElement).toHaveClass('is-disabled')
         expect(testProps.onSelect).not.toHaveBeenCalledWith(1)
