@@ -49,7 +49,7 @@ describe('test Menu and MenuItem Component',()=>{
         expect(testProps.onSelect).toHaveBeenCalledWith('2');// 调用的参数是2 
         fireEvent.click(disabledElement);
         expect(disabledElement).toHaveClass('is-disabled')
-        expect(testProps.onSelect).not.toHaveBeenCalledWith(1)
+        expect(testProps.onSelect).not.toHaveBeenCalledWith('1')
     })
 
     it('should render vertical mode when mode is set to vertical',()=>{
