@@ -1,6 +1,5 @@
 import React from 'react';
 import classnames from 'classnames';
-import { type } from '@testing-library/user-event/dist/type';
 
 type ButtonType = 'primary' | 'default' | 'danger' | 'link';
 type ButtonSize = 'lg' | 'sm';

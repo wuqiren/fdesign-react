@@ -3,6 +3,7 @@ import classNames from "classnames";
 import {MenuContxt} from './menu'
 import {MenuItemProps} from './menuItem'
 import Icon from '../Icon/icon'
+import Transition from '../Transition/transition';
 export interface SubMenuProps {
     className?:string;
     index?:string;
@@ -52,9 +53,11 @@ const SubMenu = ({className,title,children,index}:SubMenuProps)=>{
             }
         })
         return (
+            <Transition in={menuOpen} timeout={300} annimationn='zoom-in-top' >
             <ul className={subMenuClasses}>
                 {childrenComponent}
             </ul>
+            </Transition>
         )
     }
     return (
