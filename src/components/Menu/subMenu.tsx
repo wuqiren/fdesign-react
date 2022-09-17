@@ -2,7 +2,7 @@ import React,{useContext, useState} from 'react'
 import classNames from "classnames";
 import {MenuContxt} from './menu'
 import {MenuItemProps} from './menuItem'
-
+import Icon from '../Icon/icon'
 export interface SubMenuProps {
     className?:string;
     index?:string;
@@ -59,6 +59,7 @@ const SubMenu = ({className,title,children,index}:SubMenuProps)=>{
         <li key={index} className={classes} {...hoverEvent}>
             <div className='submenu-title' {...clickEvent}>
                 {title}
+                <Icon style={{marginLeft:'10px'}} icon={menuOpen?'chevron-up':'chevron-down'}/>
             </div>
             {renderChildren()}
         </li>
