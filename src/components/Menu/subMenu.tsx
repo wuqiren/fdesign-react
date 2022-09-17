@@ -17,6 +17,8 @@ const SubMenu = ({className,title,children,index}:SubMenuProps)=>{
     const [menuOpen,setMenuOpen] = useState(isOpend)
     const classes = classNames('menu-item submenu-item', className,{
         'is-active':context.index === index,
+        'is-opened':menuOpen,
+        'is-vertical':context.mode==='vertical'
     })
     const handleClick = (e:React.MouseEvent) => {
         e.preventDefault()
@@ -59,7 +61,7 @@ const SubMenu = ({className,title,children,index}:SubMenuProps)=>{
         <li key={index} className={classes} {...hoverEvent}>
             <div className='submenu-title' {...clickEvent}>
                 {title}
-                <Icon style={{marginLeft:'10px'}} icon={menuOpen?'chevron-up':'chevron-down'}/>
+                <Icon  icon='angle-down' className='arrow-icon'/>
             </div>
             {renderChildren()}
         </li>
