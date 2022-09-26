@@ -1,17 +1,19 @@
 import {useState} from 'react'
-import Menu from './components/Menu/menu'
-import MenuItem from './components/Menu/menuItem'
-import SubMenu from './components/Menu/subMenu';
+// import Menu from './components/Menu/menu'
+// import MenuItem from './components/Menu/menuItem'
+// import SubMenu from './components/Menu/subMenu';
 import { fas} from '@fortawesome/free-solid-svg-icons'
 import { library } from '@fortawesome/fontawesome-svg-core'
-import Transition from './components/Transition/transition'
-import Button from './components/Button/button';
+// import Transition from './components/Transition/transition'
+// import Button from './components/Button/button';
+import Input from './components/Input/input'
 library.add(fas)
 function App() {
   const [show,setShow]= useState(true)
   return (
     <div className='App'>
-      <Menu defaultIndex='2'  defaultOpenMenus={['42']}>
+      <Input style={{width:'300px'}} placeholder='dsadsadsa'/>
+      {/* <Menu defaultIndex='2'  defaultOpenMenus={['42']}>
         <MenuItem disabled={true}>231231</MenuItem>
         <MenuItem >231231</MenuItem>
         <MenuItem >231231</MenuItem>
@@ -36,7 +38,7 @@ function App() {
 
     <Transition in={show} timeout={300} animation='zoom-in-left'>
     <Button size='lg'>大萨达所大</Button>
-    </Transition>
+    </Transition> */}
     </div>
   );
 }
